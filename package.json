@@ -15,9 +15,10 @@
   "scripts": {
     "clean": "rm -rf lib",
     "compile": "babel --source-maps both -d lib/ src/",
-    "prepublish": "npm run compile",
+    "prepublish": "npm run snyk-protect && npm run compile",
     "test": "npm run compile && mocha --compilers js:babel-core/register --timeout 5000",
-    "lint": "./node_modules/.bin/eslint --fix src bin"
+    "lint": "./node_modules/.bin/eslint --fix src bin",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -59,7 +60,8 @@
     "probe-image-size": "^2.1.1",
     "promise": "^7.1.1",
     "promise-retry": "^1.1.1",
-    "uuid": "^2.0.3"
+    "uuid": "^2.0.3",
+    "snyk": "^1.319.1"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
@@ -74,5 +76,6 @@
   },
   "bin": {
     "md2gslides": "bin/md2gslides.js"
-  }
+  },
+  "snyk": true
 }
